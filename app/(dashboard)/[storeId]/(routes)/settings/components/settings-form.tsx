@@ -22,6 +22,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import AlertModal from "@/components/modals/alert-modal";
+import ApiAlert from "@/components/ui/api-alert";
+import { useOrigin } from "@/hooks/use-origin";
 
 interface SettingsFormProps {
   initialData: Store;
@@ -30,7 +33,7 @@ interface SettingsFormProps {
 const SettingsForm = ({ initialData }: SettingsFormProps) => {
   const params = useParams();
   const router = useRouter();
-  //   const origin = useOrigin();
+  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -76,6 +79,12 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
 
   return (
     <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={onDelete}
+        loading={loading}
+      />
       <div className="flex items-center justify-between">
         <Heading title="Settings" description="Manange store preferences." />
         <Button
@@ -118,11 +127,11 @@ const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </form>
       </Form>
       <Separator />
-      {/* <ApiAlert 
-        title="NEXT_PUBLIC_API_URL" 
-        variant="public" 
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        variant="public"
         description={`${origin}/api/${params.storeId}`}
-      /> */}
+      />
     </>
   );
 };
