@@ -26,7 +26,7 @@ const ColorClient = ({ data }: ColorClientProps) => {
           description="manage colors for your store"
         />
         <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
-          <Plus className="mr-2 h-2 w-2" />
+          <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
       </div>
