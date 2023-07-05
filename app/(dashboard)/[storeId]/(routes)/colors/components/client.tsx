@@ -10,6 +10,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { ApiList } from "@/components/ui/api-list";
 
 import { ColorColumn, columns } from "./columns";
+import { useCallback } from "react";
 
 interface ColorClientProps {
   data: ColorColumn[];
@@ -18,6 +19,7 @@ interface ColorClientProps {
 const ColorClient = ({ data }: ColorClientProps) => {
   const router = useRouter();
   const params = useParams();
+
   return (
     <>
       <div className="flex items-center justify-between">
